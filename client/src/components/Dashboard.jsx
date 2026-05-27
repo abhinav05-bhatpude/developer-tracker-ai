@@ -1,0 +1,39 @@
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import TaskCard from "./TaskCard";
+
+function Dashboard() {
+
+    return (
+
+        <div>
+
+            <Navbar />
+
+            <div className="flex">
+
+                <Sidebar />
+
+                <div className="flex-1 p-6 bg-gray-100 min-h-screen">
+
+                    <h1 className="text-3xl font-bold mb-6">
+                        Developer Tasks
+                    </h1>
+
+                    <div className="grid grid-cols-3 gap-5">
+
+                        <TaskCard />
+                        <TaskCard />
+                        <TaskCard />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    );
+}
+
+export default Dashboard;
