@@ -1,9 +1,10 @@
+import Dashboard from "./components/Dashboard";
+
 function App() {
+
   return (
-    <div>
-      <h1>DevTrack AI</h1>
-    </div>
-  )
+    <Dashboard />
+  );
 }
 
-export default App
+export default App;
