@@ -28,6 +28,20 @@ function Dashboard() {
         );
     };
 
+   const toggleTask = (id) => {
+
+    setTasks(
+        tasks.map((task) =>
+            task.id === id
+                ? {
+                    ...task,
+                    completed: !task.completed,
+                }
+                : task
+        )
+    );
+};
+
     return (
 
         <div>
@@ -55,6 +69,7 @@ function Dashboard() {
                                     key={task.id}
                                     task={task}
                                     deleteTask={deleteTask}
+                                    toggleTask={toggleTask}
                                 />
 
                             ))

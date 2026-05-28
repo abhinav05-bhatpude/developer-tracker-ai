@@ -1,4 +1,4 @@
-function TaskCard({ task, deleteTask }) {
+function TaskCard({ task, deleteTask,toggleTask,}) {
 
     return (
 
@@ -36,6 +36,13 @@ function TaskCard({ task, deleteTask }) {
                 >
                     Delete
                 </button>
+
+                <button
+    onClick={() => toggleTask(task.id)}
+    className="bg-green-500 text-white px-3 py-1 rounded"
+>
+    Complete
+</button>
 
             </div>
 
