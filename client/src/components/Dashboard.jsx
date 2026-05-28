@@ -19,13 +19,14 @@ function Dashboard() {
             title: "Learn MongoDB",
             completed: true,
         },
-
-        {
-            id: 3,
-            title: "Deploy Backend Project",
-            completed: false,
-        },
     ]);
+
+    const deleteTask = (id) => {
+
+        setTasks(
+            tasks.filter((task) => task.id !== id)
+        );
+    };
 
     return (
 
@@ -53,6 +54,7 @@ function Dashboard() {
                                 <TaskCard
                                     key={task.id}
                                     task={task}
+                                    deleteTask={deleteTask}
                                 />
 
                             ))

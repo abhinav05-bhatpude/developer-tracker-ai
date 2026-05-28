@@ -1,4 +1,4 @@
-function TaskCard({ task }) {
+function TaskCard({ task, deleteTask }) {
 
     return (
 
@@ -9,7 +9,13 @@ function TaskCard({ task }) {
             </h2>
 
             <p className="text-gray-600 mb-4">
-                Developer productivity task
+
+                {
+                    task.completed
+                        ? "Completed"
+                        : "In Progress"
+                }
+
             </p>
 
             <div className="flex justify-between items-center">
@@ -19,13 +25,16 @@ function TaskCard({ task }) {
                     {
                         task.completed
                             ? "Completed"
-                            : "In Progress"
+                            : "Pending"
                     }
 
                 </span>
 
-                <button className="bg-green-500 text-white px-3 py-1 rounded">
-                    Complete
+                <button
+                    onClick={() => deleteTask(task.id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded"
+                >
+                    Delete
                 </button>
 
             </div>
