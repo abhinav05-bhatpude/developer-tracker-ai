@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import TaskCard from "./TaskCard";
+import TaskForm from "./TaskForm";
 
 function Dashboard() {
 
@@ -19,6 +20,8 @@ function Dashboard() {
                     <h1 className="text-3xl font-bold mb-6">
                         Developer Tasks
                     </h1>
+
+                    <TaskForm />
 
                     <div className="grid grid-cols-3 gap-5">
 
