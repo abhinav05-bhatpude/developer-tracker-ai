@@ -6,6 +6,7 @@ import TaskCard from "./TaskCard";
 import TaskForm from "./TaskForm";
 import StatsCard from "./StatsCard";
 import SearchBar from "./SearchBar";
+import FilterBar from "./FilterBar";
 
 function Dashboard() {
   const [tasks, setTasks] = useState([
@@ -66,6 +67,7 @@ function Dashboard() {
           </div>
 
           <SearchBar/>
+          <FilterBar />
 
           {tasks.length === 0 ? (
             <div className="bg-white p-10 rounded-xl text-center shadow-lg">
