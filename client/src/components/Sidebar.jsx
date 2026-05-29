@@ -1,37 +1,19 @@
-function Sidebar(){
+function Sidebar() {
+  return (
+    <div className="hidden md:block bg-gray-900 text-white w-64 min-h-screen p-5">
+      <h2 className="text-xl font-bold mb-6">Dashboard</h2>
 
-    return (
+      <ul className="space-y-4">
+        <li className="hover:text-blue-400 cursor-pointer">Tasks</li>
 
-        <div className="bg-gray-900 text-white w-64 min-h-screen p-5">
+        <li className="hover:text-blue-400 cursor-pointer">Projects</li>
 
-            <h2 className="text-xl font-bold mb-6">
-                Dashboard
-            </h2>
+        <li className="hover:text-blue-400 cursor-pointer">Analytics</li>
 
-            <ul className="space-y-4">
-
-                <li className="hover:text-blue-400 cursor-pointer">
-                    Tasks
-                </li>
-
-                  <li className="hover:text-blue-400 cursor-pointer">
-                    Projects
-                </li>
-
-
-                  <li className="hover:text-blue-400 cursor-pointer">
-                    Analytics
-                </li>
-
-
-                 <li className="hover:text-blue-400 cursor-pointer">
-                    AI Suggestion
-                </li>
-
-
-            </ul>
-        </div>
-    );
+        <li className="hover:text-blue-400 cursor-pointer">AI Suggestions</li>
+      </ul>
+    </div>
+  );
 }
 
 export default Sidebar;
