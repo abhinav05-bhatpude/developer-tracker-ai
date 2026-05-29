@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import TaskCard from "./TaskCard";
 import TaskForm from "./TaskForm";
 import StatsCard from "./StatsCard";
+import SearchBar from "./SearchBar";
 
 function Dashboard() {
   const [tasks, setTasks] = useState([
@@ -63,6 +64,8 @@ function Dashboard() {
               count={tasks.filter((task) => !task.completed).length}
             />
           </div>
+
+          <SearchBar/>
 
           {tasks.length === 0 ? (
             <div className="bg-white p-10 rounded-xl text-center shadow-lg">
