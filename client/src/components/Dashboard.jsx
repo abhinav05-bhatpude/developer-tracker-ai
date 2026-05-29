@@ -14,12 +14,23 @@ function Dashboard() {
       id: 1,
       title: "Build REST API",
       completed: false,
+      category:"Backend",
+      priority:"High",
     },
 
     {
       id: 2,
       title: "Learn MongoDB",
       completed: true,
+      category:"Database",
+      priority:"Medium",
+    },
+    {
+      id:3,
+      title:"Deploy MERN App",
+      completed:false,
+      category:"Deployment",
+      priority:"High",
     },
   ]);
 
