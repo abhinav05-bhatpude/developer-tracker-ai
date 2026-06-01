@@ -12,16 +12,21 @@ import FilterBar from "./FilterBar";
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchTasks = async () => {
-      setLoading(true);
+      try {
+        setLoading(true);
 
-      const data = await getTasks();
+        const data = await getTasks();
 
-      setTasks(data);
-
-      setLoading(false);
+        setTasks(data);
+      } catch (error) {
+        setError("Failed to load tasks");
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchTasks();
@@ -56,6 +61,14 @@ function Dashboard() {
     );
   }
 
+  if (error) {
+    return (
+      <h1 className="text-3xl font-bold text-center mt-10 text-red-500">
+        {error}
+      </h1>
+    );
+  }
+
   return (
     <div>
       <Navbar />
@@ -64,21 +77,30 @@ function Dashboard() {
         <Sidebar />
 
         <div className="flex-1 p-6 bg-gray-100 min-h-screen">
-          <h1 className="text-3xl font-bold mb-6">Developer Tasks</h1>
+          <h1 className="text-3xl font-bold mb-6">
+            Developer Tasks
+          </h1>
 
           <TaskForm addTask={addTask} />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
-            <StatsCard title="Total Tasks" count={tasks.length} />
+            <StatsCard
+              title="Total Tasks"
+              count={tasks.length}
+            />
 
             <StatsCard
               title="Completed"
-              count={tasks.filter((task) => task.completed).length}
+              count={
+                tasks.filter((task) => task.completed).length
+              }
             />
 
             <StatsCard
               title="Pending"
-              count={tasks.filter((task) => !task.completed).length}
+              count={
+                tasks.filter((task) => !task.completed).length
+              }
             />
           </div>
 
@@ -88,9 +110,13 @@ function Dashboard() {
 
           {tasks.length === 0 ? (
             <div className="bg-white p-10 rounded-xl text-center shadow-lg">
-              <h2 className="text-2xl font-bold mb-2">No Tasks Found</h2>
+              <h2 className="text-2xl font-bold mb-2">
+                No Tasks Found
+              </h2>
 
-              <p className="text-gray-500">Start adding developer tasks</p>
+              <p className="text-gray-500">
+                Start adding developer tasks
+              </p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
