@@ -6,8 +6,11 @@ const getTasks = async(req,res)=>{
 
     res.json(tasks);
 };
-const createTask = async(req,res)=>{
-    const task=await Task.create(req.body);
+const createTask =
+async(req,res)=>{
+
+    const task =
+    await Task.create(req.body);
 
     res.status(201).json(task);
 };
