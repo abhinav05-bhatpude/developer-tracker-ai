@@ -11,12 +11,17 @@ import FilterBar from "./FilterBar";
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTasks = async () => {
+      setLoading(true);
+
       const data = await getTasks();
 
       setTasks(data);
+
+      setLoading(false);
     };
 
     fetchTasks();
@@ -42,6 +47,14 @@ function Dashboard() {
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
   };
+
+  if (loading) {
+    return (
+      <h1 className="text-3xl font-bold text-center mt-10">
+        Loading...
+      </h1>
+    );
+  }
 
   return (
     <div>
