@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getTasks } from "../services/taskService";
 
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
@@ -9,31 +10,17 @@ import SearchBar from "./SearchBar";
 import FilterBar from "./FilterBar";
 
 function Dashboard() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Build REST API",
-      completed: false,
-      category: "Backend",
-      priority: "High",
-    },
+  const [tasks, setTasks] = useState([]);
 
-    {
-      id: 2,
-      title: "Learn MongoDB",
-      completed: true,
-      category: "Database",
-      priority: "Medium",
-    },
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const data = await getTasks();
 
-    {
-      id: 3,
-      title: "Deploy MERN App",
-      completed: false,
-      category: "Deployment",
-      priority: "High",
-    },
-  ]);
+      setTasks(data);
+    };
+
+    fetchTasks();
+  }, []);
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
@@ -96,7 +83,7 @@ function Dashboard() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {tasks.map((task) => (
                 <TaskCard
-                  key={task.id}
+                  key={task._id}
                   task={task}
                   deleteTask={deleteTask}
                   toggleTask={toggleTask}
